@@ -1,0 +1,17 @@
+# Internal planning docs
+BriefingDocs/
+
+# Netlify staging folder
+blakejones-portfolio/
+
+# Photoshop source files
+*.psd
+*.psb
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Misc
+*.log
+node_modules/

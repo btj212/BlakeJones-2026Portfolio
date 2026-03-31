@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Internal planning docs (not for public repo)
+BriefingDocs/
+
+# Netlify staging folder (using Vercel instead)
+blakejones-portfolio/
+
+# Photoshop source files — export web-ready JPGs to HarmlessHarvest/ instead
+*.psd
+*.psb
+
+# Misc
+*.log
+node_modules/

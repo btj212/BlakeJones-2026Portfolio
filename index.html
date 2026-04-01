@@ -19,7 +19,6 @@
       --muted: #5c5c5c;
       --dim: #2e2e2e;
       --accent: #d4ff47;
-      --accent-glow: rgba(212, 255, 71, 0.08);
     }
 
     html { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -31,8 +30,7 @@
       display: flex; justify-content: space-between; align-items: center;
       background: rgba(10,10,10,0.88);
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.4s;
+      border-bottom: 1px solid transparent; transition: border-color 0.4s;
     }
     nav.scrolled { border-bottom-color: var(--border); }
     .nav-logo { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; }
@@ -48,9 +46,7 @@
       border-bottom: 1px solid var(--border);
       position: relative; overflow: hidden;
     }
-    .hero-video-bg {
-      position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
-    }
+    .hero-video-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
     .hero-video-bg iframe {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -58,10 +54,7 @@
       min-width: 100%; min-height: 56.25vw;
       pointer-events: none; border: none;
     }
-    .hero-video-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: rgba(10,10,10,0.78); pointer-events: none;
-    }
+    .hero-video-overlay { position: absolute; inset: 0; z-index: 1; background: rgba(10,10,10,0.78); pointer-events: none; }
     .hero-eyebrow,
     .hero-name,
     .hero-desc,
@@ -73,24 +66,14 @@
       display: flex; align-items: center; gap: 12px;
     }
     .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
-    .hero-name {
-      font-size: clamp(72px, 11vw, 148px);
-      font-weight: 900; line-height: 0.88; letter-spacing: -0.04em;
-      color: var(--text); margin-bottom: 52px;
-    }
-    .hero-desc {
-      max-width: 620px; font-size: clamp(16px, 1.8vw, 20px);
-      font-weight: 300; line-height: 1.6; color: var(--muted); margin-bottom: 28px;
-    }
+    .hero-name { font-size: clamp(72px, 11vw, 148px); font-weight: 900; line-height: 0.88; letter-spacing: -0.04em; color: var(--text); margin-bottom: 52px; }
+    .hero-desc { max-width: 620px; font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; line-height: 1.6; color: var(--muted); margin-bottom: 28px; }
     .hero-meta { font-size: 12px; font-weight: 400; color: var(--dim); letter-spacing: 0.03em; }
     .hero-meta strong { color: var(--muted); font-weight: 500; }
-    .scroll-hint {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--dim); display: flex; align-items: center; gap: 12px;
-    }
+    .scroll-hint { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; gap: 12px; }
     .scroll-hint::after { content: ''; display: block; width: 44px; height: 1px; background: var(--dim); }
 
-    /* ─── SECTIONS ─── */
+    /* ─── SECTION HEADER ─── */
     .section-header {
       display: flex; justify-content: space-between; align-items: baseline;
       padding-bottom: 28px; border-bottom: 1px solid var(--border); margin-bottom: 2px;
@@ -100,116 +83,59 @@
 
     /* ─── WORK ─── */
     #work { padding: 88px 52px; }
-
-    /* ─── CARD VIDEO BACKGROUND ─── */
-    .card-video-bg {
-      position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
-    }
-    .card-video-bg iframe {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200%; height: 200%;
-      pointer-events: none; border: none;
-    }
-    .card-video-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: rgba(10,10,10,0.72);
-      opacity: 0; transition: opacity 0.5s; pointer-events: none;
-    }
-    .card.has-video .card-video-overlay,
-    .card-featured.has-video .card-video-overlay,
-    .card-wide.has-video .card-video-overlay { opacity: 1; }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
 
     /* ─── FEATURED CARD ─── */
     .card-featured {
       background: var(--card); border: 1px solid var(--border); border-radius: 3px;
-      padding: 72px; margin-bottom: 2px; cursor: pointer;
-      transition: background 0.3s, border-color 0.25s;
-      position: relative; overflow: hidden;
+      padding: 64px; margin-bottom: 2px; cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+      position: relative; display: flex; flex-direction: column;
     }
     .card-featured::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--accent); z-index: 5;
+      background: var(--accent);
     }
     .card-featured:hover { background: var(--card-hover); border-color: #242424; }
-    .card-featured:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .card-featured .card-content { position: relative; z-index: 2; }
-
-    /* ─── GRID ─── */
-    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
 
     /* ─── STANDARD CARD ─── */
     .card {
       background: var(--card); border: 1px solid var(--border); border-radius: 3px;
-      padding: 52px; min-height: 360px; cursor: pointer;
-      transition: background 0.3s, border-color 0.25s;
+      padding: 44px; min-height: 280px; cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
       display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
     }
     .card:hover { background: var(--card-hover); border-color: #242424; }
-    .card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .card:hover .photo-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .card .card-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; justify-content: space-between;
-      flex: 1;
-    }
 
     /* ─── WIDE CARD ─── */
     .card-wide {
       background: var(--card); border: 1px solid var(--border); border-radius: 3px;
       padding: 52px; cursor: pointer;
-      transition: background 0.3s; display: flex; gap: 80px; align-items: flex-start;
-      position: relative; overflow: hidden;
+      transition: background 0.25s; display: flex; gap: 80px; align-items: flex-start;
     }
     .card-wide:hover { background: var(--card-hover); }
-    .card-wide:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .card-wide-left { flex: 0 0 380px; position: relative; z-index: 2; }
-    .card-wide-right { flex: 1; padding-top: 4px; position: relative; z-index: 2; }
-
-    /* ─── PLAY ICON ─── */
-    .play-icon {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.85);
-      width: 60px; height: 60px;
-      border: 1.5px solid rgba(240, 237, 232, 0.25); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none;
-      z-index: 3;
-    }
-    .play-icon::after {
-      content: ''; border-left: 16px solid rgba(240,237,232,0.8);
-      border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px;
-    }
-
-    /* ─── PHOTO ICON (Harmless Harvest) ─── */
-    .photo-icon {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.85);
-      width: 60px; height: 60px;
-      border: 1.5px solid rgba(240, 237, 232, 0.25); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none;
-      z-index: 3;
-    }
-    .photo-icon-lens {
-      width: 22px; height: 22px;
-      border: 2px solid rgba(240,237,232,0.8); border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(240,237,232,0.12);
-    }
+    .card-wide-left { flex: 0 0 340px; }
+    .card-wide-right { flex: 1; padding-top: 6px; }
 
     /* ─── CARD CONTENT ─── */
-    .card-index { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; color: var(--dim); margin-bottom: 20px; }
-    .card-client { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .card-meta { display: flex; align-items: baseline; gap: 14px; margin-bottom: 32px; }
+    .card-index { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; color: var(--dim); }
+    .card-client { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
     .card-title {
       font-size: clamp(22px, 2.4vw, 30px); font-weight: 700;
-      line-height: 1.1; letter-spacing: -0.025em; color: var(--text); margin-bottom: 18px;
+      line-height: 1.08; letter-spacing: -0.025em; color: var(--text);
     }
-    .card-featured .card-title { font-size: clamp(30px, 3.5vw, 50px); margin-bottom: 20px; }
-    .card-desc { font-size: 13px; line-height: 1.72; color: var(--muted); max-width: 580px; margin-bottom: 36px; }
-    .card-featured .card-desc { font-size: 14px; max-width: 680px; }
+    .card-featured .card-title { font-size: clamp(32px, 3.8vw, 56px); }
 
-    .card-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+    .card-subtitle {
+      font-size: 13px; font-weight: 400; line-height: 1.65; color: var(--muted);
+      max-width: 640px; margin-top: 20px;
+    }
+
+    .card-footer { margin-top: auto; padding-top: 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+    .card-wide-right .card-footer { padding-top: 0; margin-top: 0; }
+
     .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
       font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -220,29 +146,21 @@
     .card-result { text-align: right; flex-shrink: 0; }
     .result-num { font-size: 36px; font-weight: 900; letter-spacing: -0.04em; color: var(--text); line-height: 1; }
     .result-sub { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-    .result-text { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); line-height: 1.25; text-align: right; }
+    .result-text { font-size: 13px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); line-height: 1.25; text-align: right; }
+
+    /* Wide card desc */
+    .card-wide-desc { font-size: 13px; line-height: 1.72; color: var(--muted); margin-bottom: 28px; }
 
     /* ─── ABOUT ─── */
     #about {
       padding: 88px 52px; border-top: 1px solid var(--border);
       display: grid; grid-template-columns: 5fr 6fr; gap: 88px; align-items: start;
     }
-    .about-photo {
-      aspect-ratio: 4/5; background: var(--card); border: 1px solid var(--border); border-radius: 3px;
-      overflow: hidden; display: flex; align-items: flex-end; justify-content: center;
-      position: relative;
-    }
+    .about-photo { aspect-ratio: 4/5; background: var(--card); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; display: flex; align-items: flex-end; position: relative; }
     .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(20%); }
-    .about-photo-placeholder {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 24px; background: linear-gradient(transparent, rgba(10,10,10,0.8));
-      font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);
-    }
+    .about-photo-placeholder { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: linear-gradient(transparent, rgba(10,10,10,0.8)); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
     .about-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
-    .about-headline {
-      font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.18;
-      letter-spacing: -0.025em; color: var(--text); margin-bottom: 28px;
-    }
+    .about-headline { font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; color: var(--text); margin-bottom: 28px; }
     .about-body { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 48px; }
     .about-body p + p { margin-top: 14px; }
     .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; padding-top: 40px; border-top: 1px solid var(--border); }
@@ -253,77 +171,47 @@
     #contact { padding: 88px 52px 80px; border-top: 1px solid var(--border); }
     .contact-inner { max-width: 900px; }
     .contact-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
-    .contact-headline {
-      font-size: clamp(52px, 8vw, 112px); font-weight: 900;
-      line-height: 0.92; letter-spacing: -0.04em; color: var(--text); margin-bottom: 56px;
-    }
+    .contact-headline { font-size: clamp(52px, 8vw, 112px); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: var(--text); margin-bottom: 56px; }
     .contact-headline em { color: var(--accent); font-style: normal; }
     .contact-links { display: flex; gap: 40px; flex-wrap: wrap; }
-    .contact-link {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px;
-      transition: color 0.2s;
-    }
+    .contact-link { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
     .contact-link:hover { color: var(--accent); }
     .contact-link svg { width: 12px; height: 12px; fill: currentColor; }
 
     /* ─── FOOTER ─── */
-    footer {
-      padding: 28px 52px; border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    footer { padding: 28px 52px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     footer span { font-size: 10px; letter-spacing: 0.08em; color: var(--dim); }
 
     /* ─── VIDEO MODAL ─── */
     .modal {
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(10,10,10,0.96); align-items: center; justify-content: center; padding: 52px;
+      overflow-y: auto;
     }
     .modal.open { display: flex; }
-    .modal-wrap { width: 100%; max-width: 1180px; position: relative; }
-    .modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .modal-title { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .modal-close {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); background: none; border: 1px solid var(--border);
-      padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
-    }
+    .modal-wrap { width: 100%; max-width: 1100px; margin: auto; }
+    .modal-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .modal-title { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-right: 40px; line-height: 1.4; }
+    .modal-close { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s; flex-shrink: 0; }
     .modal-close:hover { color: var(--text); border-color: var(--muted); }
     .modal-video { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 3px; overflow: hidden; }
     .modal-video iframe { width: 100%; height: 100%; border: none; }
+    .modal-desc { font-size: 13px; line-height: 1.75; color: var(--muted); margin-top: 24px; max-width: 720px; }
 
     /* ─── PHOTO LIGHTBOX ─── */
-    .lightbox {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,10,10,0.96); align-items: center; justify-content: center; padding: 52px;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(10,10,10,0.96); align-items: center; justify-content: center; padding: 52px; }
     .lightbox.open { display: flex; }
-    .lightbox-wrap { width: 100%; max-width: 1180px; }
+    .lightbox-wrap { width: 100%; max-width: 1100px; }
     .lightbox-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .lightbox-title { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .lightbox-close {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); background: none; border: 1px solid var(--border);
-      padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
-    }
+    .lightbox-close { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
     .lightbox-close:hover { color: var(--text); border-color: var(--muted); }
     .lightbox-stage { display: flex; align-items: center; gap: 20px; }
-    .lightbox-img-wrap {
-      flex: 1; aspect-ratio: 4/3; background: var(--card); border-radius: 3px; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .lightbox-img-wrap { flex: 1; aspect-ratio: 4/3; background: var(--card); border-radius: 3px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .lightbox-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
-    .lightbox-empty {
-      flex: 1; aspect-ratio: 4/3; background: var(--card); border-radius: 3px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .lightbox-empty { flex: 1; aspect-ratio: 4/3; background: var(--card); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
     .lightbox-empty p { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
-    .lightbox-nav {
-      font-size: 18px; font-weight: 300; color: var(--muted); background: none;
-      border: 1px solid var(--border); width: 44px; height: 44px; border-radius: 2px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: color 0.2s, border-color 0.2s; flex-shrink: 0;
-    }
+    .lightbox-nav { font-size: 18px; font-weight: 300; color: var(--muted); background: none; border: 1px solid var(--border); width: 44px; height: 44px; border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: color 0.2s, border-color 0.2s; flex-shrink: 0; }
     .lightbox-nav:hover { color: var(--text); border-color: var(--muted); }
     .lightbox-counter { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 16px; }
 
@@ -334,10 +222,10 @@
       .hero { padding: 0 28px; padding-top: 100px; padding-bottom: 80px; }
       .scroll-hint { left: 28px; }
       #work { padding: 64px 28px; }
-      .card-featured { padding: 44px 36px; }
+      .card-featured { padding: 44px 32px; }
       .card-grid { grid-template-columns: 1fr; }
-      .card { padding: 40px 32px; min-height: 280px; }
-      .card-wide { flex-direction: column; padding: 40px 32px; gap: 32px; }
+      .card { padding: 36px 28px; min-height: 220px; }
+      .card-wide { flex-direction: column; padding: 36px 28px; gap: 28px; }
       .card-wide-left { flex: none; }
       #about { padding: 64px 28px; grid-template-columns: 1fr; gap: 48px; }
       #contact { padding: 64px 28px; }
@@ -385,31 +273,24 @@
     </div>
 
     <!-- 01 – AI SUPERSTUDIO (FEATURED) -->
-    <div class="card-featured" data-vid="1151913385" onclick="openModal('1151913385', 'Custom Ink × AI Superstudio — Undead Acres')">
-      <div class="card-video-bg"></div>
-      <div class="card-video-overlay"></div>
-      <div class="play-icon"></div>
-      <div class="card-content">
-        <div>
-          <div class="card-index">01</div>
-          <div class="card-client">Mekanism AI Superstudio</div>
-          <h2 class="card-title">Building AI-Native<br>Production at Scale</h2>
-          <p class="card-desc">
-            Launched and lead Mekanism's AI Superstudio — one of the first AI-native production capabilities inside a full-service creative agency. 100+ AI films for Advertising Week New York using Google Veo 3, Custom Ink's Holiday and Halloween campaigns produced entirely through AI, and press in Campaign US, LBBOnline, and Ads of the World.
-          </p>
+    <div class="card-featured" onclick="openModal('1151913385')">
+      <div class="card-meta">
+        <span class="card-index">01</span>
+        <span class="card-client">Mekanism AI Superstudio</span>
+      </div>
+      <h2 class="card-title">Building AI-Native<br>Production at Scale</h2>
+      <p class="card-subtitle">Launched and lead one of the first AI-native production capabilities inside a full-service creative agency — 100+ AI films, Google Veo 3, and press in Campaign US and LBBOnline.</p>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="tag tag-ai">AI Video</span>
+          <span class="tag">Integrated Campaign</span>
+          <span class="tag">Brand</span>
+          <span class="tag">Social</span>
+          <span class="tag">Digital</span>
         </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag tag-ai">AI Video</span>
-            <span class="tag">Integrated Campaign</span>
-            <span class="tag">Brand</span>
-            <span class="tag">Social</span>
-            <span class="tag">Digital</span>
-          </div>
-          <div class="card-result">
-            <div class="result-num">100+</div>
-            <div class="result-sub">AI Films Delivered</div>
-          </div>
+        <div class="card-result">
+          <div class="result-num">100+</div>
+          <div class="result-sub">AI Films Delivered</div>
         </div>
       </div>
     </div>
@@ -418,49 +299,37 @@
     <div class="card-grid">
 
       <!-- 02 – SVB -->
-      <div class="card" data-vid="993657855" onclick="openModal('993657855', 'SVB — Yes, SVB')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">02</div>
-            <div class="card-client">SVB</div>
-            <h2 class="card-title">Yes, SVB</h2>
-            <p class="card-desc">Crafted AI-generated swirls and in-house animation to bring SVB's brand identity to life — a design-centric approach that fused generative art with traditional motion graphics.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag tag-ai">AI-Generated</span>
-              <span class="tag">Animation</span>
-              <span class="tag">Design</span>
-            </div>
+      <div class="card" onclick="openModal('993657855')">
+        <div class="card-meta">
+          <span class="card-index">02</span>
+          <span class="card-client">SVB</span>
+        </div>
+        <h2 class="card-title">Yes, SVB</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag tag-ai">AI-Generated</span>
+            <span class="tag">Animation</span>
+            <span class="tag">Design</span>
           </div>
         </div>
       </div>
 
       <!-- 03 – COLONOSCOPY REMINDER -->
-      <div class="card" data-vid="1168539981" onclick="openModal('1168539981', 'A24 × Mekanism — Colonoscopy Reminder')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">03</div>
-            <div class="card-client">A24 × Mekanism</div>
-            <h2 class="card-title">Colonoscopy<br>Reminder</h2>
-            <p class="card-desc">Instead of marketing A24's Sundance hit <em>André Is An Idiot</em>, we marketed colonoscopies — OOH, influencer Butt Boxes, a limited-edition Caddis collab, and colonoscopyreminder.com. Millions of reminders sent. Thousands of screenings scheduled.</p>
+      <div class="card" onclick="openModal('1168539981')">
+        <div class="card-meta">
+          <span class="card-index">03</span>
+          <span class="card-client">A24 × Mekanism</span>
+        </div>
+        <h2 class="card-title">Colonoscopy<br>Reminder</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">OOH</span>
+            <span class="tag">Experiential</span>
+            <span class="tag">Social</span>
+            <span class="tag">Product</span>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">OOH</span>
-              <span class="tag">Experiential</span>
-              <span class="tag">Social</span>
-              <span class="tag">Product</span>
-            </div>
-            <div class="card-result">
-              <div class="result-text">Sundance<br>Aud. Favorite</div>
-            </div>
+          <div class="card-result">
+            <div class="result-text">Sundance<br>Aud. Favorite</div>
           </div>
         </div>
       </div>
@@ -471,51 +340,39 @@
     <div class="card-grid">
 
       <!-- 04 – AMTRAK -->
-      <div class="card" data-vid="1143885879" onclick="openModal('1143885879', 'Amtrak — Trak Suits')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">04</div>
-            <div class="card-client">Amtrak</div>
-            <h2 class="card-title">Trak Suits</h2>
-            <p class="card-desc">Experiential activation in partnership with students from the New York School of Design to design the ultimate Trak Suits. The winning design launched on Amtrak's merch store and sold out within 48 hours.</p>
+      <div class="card" onclick="openModal('1143885879')">
+        <div class="card-meta">
+          <span class="card-index">04</span>
+          <span class="card-client">Amtrak</span>
+        </div>
+        <h2 class="card-title">Trak Suits</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Experiential</span>
+            <span class="tag">Product</span>
+            <span class="tag">Design Collab</span>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Experiential</span>
-              <span class="tag">Product</span>
-              <span class="tag">Design Collab</span>
-            </div>
-            <div class="card-result">
-              <div class="result-num">48hrs</div>
-              <div class="result-sub">Sold Out</div>
-            </div>
+          <div class="card-result">
+            <div class="result-num">48hrs</div>
+            <div class="result-sub">Sold Out</div>
           </div>
         </div>
       </div>
 
       <!-- 05 – SLING TV -->
-      <div class="card" data-vid="785315580" onclick="openModal('785315580', 'Sling TV — Football 360')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">05</div>
-            <div class="card-client">Sling TV</div>
-            <h2 class="card-title">Multi-Year Integrated<br>Campaign — Account EP</h2>
-            <p class="card-desc">Account EP for Sling TV's multi-year AOR — full portfolio production across broadcast TV, digital, OOH, and social for multiple seasons.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Live Action</span>
-              <span class="tag">Broadcast</span>
-              <span class="tag">Digital</span>
-              <span class="tag">Social</span>
-              <span class="tag">Performance</span>
-            </div>
+      <div class="card" onclick="openModal('785315580')">
+        <div class="card-meta">
+          <span class="card-index">05</span>
+          <span class="card-client">Sling TV</span>
+        </div>
+        <h2 class="card-title">Multi-Year Integrated<br>Campaign</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Live Action</span>
+            <span class="tag">Broadcast</span>
+            <span class="tag">Digital</span>
+            <span class="tag">Social</span>
+            <span class="tag">Performance</span>
           </div>
         </div>
       </div>
@@ -526,50 +383,37 @@
     <div class="card-grid">
 
       <!-- 06 – NBA -->
-      <div class="card" data-vid="785315154" onclick="openModal('785315154', 'NBA — This is hAPPening')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">06</div>
-            <div class="card-client">NBA</div>
-            <h2 class="card-title">"This is hAPPening"<br>— App Launch Campaign</h2>
-            <p class="card-desc">Campaign production for the NBA's app launch — DTC-first, featuring LaMelo Ball and Jordan Poole. Exceeded aggressive download targets in the 2022–23 season opener.</p>
+      <div class="card" onclick="openModal('785315154')">
+        <div class="card-meta">
+          <span class="card-index">06</span>
+          <span class="card-client">NBA</span>
+        </div>
+        <h2 class="card-title">"This is hAPPening"<br>— App Launch</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Live Action</span>
+            <span class="tag">Digital</span>
+            <span class="tag">DTC Launch</span>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Live Action</span>
-              <span class="tag">Digital</span>
-              <span class="tag">Social</span>
-              <span class="tag">DTC Launch</span>
-            </div>
-            <div class="card-result">
-              <div class="result-num">800K+</div>
-              <div class="result-sub">Downloads · ↑40% vs Goal</div>
-            </div>
+          <div class="card-result">
+            <div class="result-num">800K+</div>
+            <div class="result-sub">Downloads · ↑40% vs Goal</div>
           </div>
         </div>
       </div>
 
       <!-- 07 – PELOTON -->
-      <div class="card" data-vid="481833606" onclick="openModal('481833606', 'Peloton — We All Have Our Reasons')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">07</div>
-            <div class="card-client">Peloton</div>
-            <h2 class="card-title">We All Have<br>Our Reasons</h2>
-            <p class="card-desc">Brand campaign production for one of the most recognized DTC fitness brands of the decade — TV, digital, and performance across Mekanism's multi-year AOR.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Live Action</span>
-              <span class="tag">Brand</span>
-              <span class="tag">DTC</span>
-            </div>
+      <div class="card" onclick="openModal('481833606')">
+        <div class="card-meta">
+          <span class="card-index">07</span>
+          <span class="card-client">Peloton</span>
+        </div>
+        <h2 class="card-title">We All Have<br>Our Reasons</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Live Action</span>
+            <span class="tag">Brand</span>
+            <span class="tag">DTC</span>
           </div>
         </div>
       </div>
@@ -580,48 +424,36 @@
     <div class="card-grid">
 
       <!-- 08 – FRIDA -->
-      <div class="card" data-vid="516918826" onclick="openModal('516918826', 'Frida Mom — Stream of Lactation')">
-        <div class="card-video-bg"></div>
-        <div class="card-video-overlay"></div>
-        <div class="play-icon"></div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">08</div>
-            <div class="card-client">Frida</div>
-            <h2 class="card-title">"Keep Calm and<br>Flow On"</h2>
-            <p class="card-desc">Postpartum campaign that challenged — and ultimately changed — NBC's broadcast standards for national TV. Medically accurate content that rewrote institutional rules around women's health advertising.</p>
+      <div class="card" onclick="openModal('516918826')">
+        <div class="card-meta">
+          <span class="card-index">08</span>
+          <span class="card-client">Frida</span>
+        </div>
+        <h2 class="card-title">"Keep Calm and<br>Flow On"</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Live Action</span>
+            <span class="tag">Cultural Impact</span>
+            <span class="tag">Brand</span>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Live Action</span>
-              <span class="tag">Cultural Impact</span>
-              <span class="tag">Brand</span>
-            </div>
-            <div class="card-result">
-              <div class="result-text">Changed<br>NBC's Rules</div>
-            </div>
+          <div class="card-result">
+            <div class="result-text">Changed<br>NBC's Rules</div>
           </div>
         </div>
       </div>
 
       <!-- 09 – HARMLESS HARVEST -->
-      <div class="card card-photo" onclick="openLightbox()">
-        <div class="photo-icon">
-          <div class="photo-icon-lens"></div>
+      <div class="card" onclick="openLightbox()">
+        <div class="card-meta">
+          <span class="card-index">09</span>
+          <span class="card-client">Harmless Harvest</span>
         </div>
-        <div class="card-content">
-          <div>
-            <div class="card-index">09</div>
-            <div class="card-client">Harmless Harvest</div>
-            <h2 class="card-title">Product<br>Photography</h2>
-            <p class="card-desc">Product and lifestyle photography for Harmless Harvest — natural light compositions capturing the brand's pure, vibrant aesthetic. Photography as a production discipline: creative direction, set design, and post.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">Photography</span>
-              <span class="tag">Product</span>
-              <span class="tag">Creative Direction</span>
-            </div>
+        <h2 class="card-title">Product<br>Photography</h2>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Photography</span>
+            <span class="tag">Product</span>
+            <span class="tag">Creative Direction</span>
           </div>
         </div>
       </div>
@@ -629,22 +461,23 @@
     </div>
 
     <!-- 10 – MADE TO SAVE (WIDE) -->
-    <div class="card-wide" data-vid="785319274" onclick="openModal('785319274', 'Made to Save — The Carla Brown Story')">
-      <div class="card-video-bg"></div>
-      <div class="card-video-overlay"></div>
-      <div class="play-icon"></div>
+    <div class="card-wide" onclick="openModal('785319274')">
       <div class="card-wide-left">
-        <div class="card-index">10</div>
-        <div class="card-client">Made to Save</div>
+        <div class="card-meta">
+          <span class="card-index">10</span>
+          <span class="card-client">Made to Save</span>
+        </div>
         <h2 class="card-title">The Carla<br>Brown Story</h2>
-        <div class="card-tags" style="margin-top: 20px;">
-          <span class="tag">Documentary</span>
-          <span class="tag">Long-Form</span>
-          <span class="tag">Branded Content</span>
+        <div class="card-footer" style="padding-top: 28px;">
+          <div class="card-tags">
+            <span class="tag">Documentary</span>
+            <span class="tag">Long-Form</span>
+            <span class="tag">Branded Content</span>
+          </div>
         </div>
       </div>
       <div class="card-wide-right">
-        <p class="card-desc" style="max-width: 100%; margin-bottom: 0;">
+        <p class="card-wide-desc">
           Long-form branded documentary following Carla Brown's story — pure narrative production in service of impact. From high-velocity commercial production to patient, character-driven storytelling.
         </p>
       </div>
@@ -731,6 +564,7 @@
       <div class="modal-video">
         <iframe id="modal-iframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <p class="modal-desc" id="modal-desc"></p>
     </div>
   </div>
 
@@ -755,19 +589,60 @@
     </div>
   </div>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
+    // ─── PROJECT DATA ───
+    var projects = {
+      '1151913385': {
+        title: 'Custom Ink × AI Superstudio — Undead Acres',
+        desc: 'Launched and lead Mekanism\'s AI Superstudio — one of the first AI-native production capabilities inside a full-service creative agency. 100+ AI films for Advertising Week New York using Google Veo 3, Custom Ink\'s Holiday and Halloween campaigns produced entirely through AI, and press in Campaign US, LBBOnline, and Ads of the World.'
+      },
+      '993657855': {
+        title: 'SVB — Yes, SVB',
+        desc: 'Crafted AI-generated swirls and in-house animation to bring SVB\'s brand identity to life — a design-centric approach that fused generative art with traditional motion graphics.'
+      },
+      '1168539981': {
+        title: 'A24 × Mekanism — Colonoscopy Reminder',
+        desc: 'Instead of marketing A24\'s Sundance hit André Is An Idiot, we marketed colonoscopies — OOH, influencer Butt Boxes, a limited-edition Caddis eyewear collab, and colonoscopyreminder.com. Millions of reminders sent. Thousands of colonoscopy screenings scheduled.'
+      },
+      '1143885879': {
+        title: 'Amtrak — Trak Suits',
+        desc: 'Experiential activation in partnership with students from the New York School of Design to design the ultimate Trak Suits. The winning design launched on Amtrak\'s merch store and sold out within 48 hours.'
+      },
+      '785315580': {
+        title: 'Sling TV — Football 360',
+        desc: 'Account EP for Sling TV\'s multi-year AOR — full portfolio production across broadcast TV, digital, OOH, and social for multiple seasons. From brand TV to performance creative.'
+      },
+      '785315154': {
+        title: 'NBA — This is hAPPening',
+        desc: 'Campaign production for the NBA\'s app launch — DTC-first, featuring LaMelo Ball and Jordan Poole. Exceeded aggressive download targets in the 2022–23 season opener. 800K+ downloads, +40% vs. goal, 1B+ views.'
+      },
+      '481833606': {
+        title: 'Peloton — We All Have Our Reasons',
+        desc: 'Brand campaign production for one of the most recognized DTC fitness brands of the decade — TV, digital, and performance across Mekanism\'s multi-year AOR.'
+      },
+      '516918826': {
+        title: 'Frida Mom — Stream of Lactation',
+        desc: 'Postpartum campaign that challenged — and ultimately changed — NBC\'s broadcast standards for national television. Medically accurate content that rewrote institutional rules around women\'s health advertising.'
+      },
+      '785319274': {
+        title: 'Made to Save — The Carla Brown Story',
+        desc: 'Long-form branded documentary following Carla Brown\'s story — pure narrative production in service of impact. From high-velocity commercial production to patient, character-driven storytelling.'
+      }
+    };
+
     // ─── NAV SCROLL ───
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
     // ─── VIDEO MODAL ───
-    function openModal(vimeoId, title) {
+    function openModal(vimeoId) {
+      var data = projects[vimeoId] || {};
       document.getElementById('modal-iframe').src =
         'https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&color=d4ff47&title=0&byline=0&portrait=0';
-      document.getElementById('modal-title').textContent = title || '';
+      document.getElementById('modal-title').textContent = data.title || '';
+      document.getElementById('modal-desc').textContent = data.desc || '';
       document.getElementById('modal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -782,47 +657,10 @@
       if (e.target === document.getElementById('modal')) closeModal();
     }
 
-    // ─── CARD HOVER VIDEO PREVIEWS ───
-    const cardPlayers = new Map();
-
-    function initCardHovers() {
-      document.querySelectorAll('[data-vid]').forEach(function(card) {
-        var vimeoId = parseInt(card.dataset.vid);
-        var container = card.querySelector('.card-video-bg');
-        if (!container) return;
-
-        card.addEventListener('mouseenter', function() {
-          if (!cardPlayers.has(card)) {
-            var player = new Vimeo.Player(container, {
-              id: vimeoId,
-              background: true,
-              muted: true,
-              loop: true,
-              responsive: true
-            });
-            cardPlayers.set(card, player);
-            player.ready().then(function() {
-              card.classList.add('has-video');
-            }).catch(function() {});
-          } else {
-            cardPlayers.get(card).play().catch(function() {});
-            card.classList.add('has-video');
-          }
-        });
-
-        card.addEventListener('mouseleave', function() {
-          if (cardPlayers.has(card)) {
-            cardPlayers.get(card).pause().catch(function() {});
-          }
-          card.classList.remove('has-video');
-        });
-      });
-    }
-
     // ─── PHOTO LIGHTBOX ───
-    // Add image paths here as photos are added to the HarmlessHarvest/ folder
-    // Example: 'HarmlessHarvest/photo-01.jpg'
+    // Add image filenames here as photos are added to HarmlessHarvest/
     var harmlessImages = [
+      // 'HarmlessHarvest/photo-01.jpg',
     ];
 
     var lightboxIndex = 0;
@@ -862,19 +700,19 @@
     }
 
     function updateLightboxImage() {
-      if (harmlessImages.length === 0) return;
+      if (!harmlessImages.length) return;
       document.getElementById('lightbox-img').src = harmlessImages[lightboxIndex];
       document.getElementById('lightbox-counter').textContent =
         (lightboxIndex + 1) + ' / ' + harmlessImages.length;
     }
 
     function lightboxNav(dir) {
-      if (harmlessImages.length === 0) return;
+      if (!harmlessImages.length) return;
       lightboxIndex = (lightboxIndex + dir + harmlessImages.length) % harmlessImages.length;
       updateLightboxImage();
     }
 
-    // ─── KEYBOARD HANDLER ───
+    // ─── KEYBOARD ───
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         if (document.getElementById('modal').classList.contains('open')) closeModal();
@@ -885,13 +723,6 @@
         if (e.key === 'ArrowRight') lightboxNav(1);
       }
     });
-
-    // ─── INIT ───
-    if (window.Vimeo) {
-      initCardHovers();
-    } else {
-      document.querySelector('script[src*="player.vimeo.com"]').addEventListener('load', initCardHovers);
-    }
   </script>
 </body>
 </html>
